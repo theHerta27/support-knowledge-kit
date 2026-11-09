@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "support-knowledge-kit"
+version = "0.1.0"
+description = "Local knowledge tools over MCP, paired with an evidence-based customer support Skill."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+dependencies = ["mcp==2.3.0", "PyYAML>=6,<7"]
+keywords = ["mcp", "agent-skills", "customer-support", "knowledge-base"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "build>=1.2"]
+
+[project.scripts]
+support-knowledge-mcp = "support_knowledge.server:main"
+
+[project.urls]
+Repository = "https://github.com/theHerta27/support-knowledge-kit"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/support_knowledge"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
